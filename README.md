@@ -1,10 +1,14 @@
+# DEPRECATED
+
+## This repository is unmaintained and deprecated. Use at your own risk; it is likely no longer functional.
+
 wl
 ==
 
 Unofficial Wunderlist API client library and CLI, written in golang.
 
 Copyright © 2014-2016, Robert Dimsdale.
-Licensed under the [MIT License](https://github.com/robdimsdale/wl/blob/master/LICENSE).
+Licensed under the [MIT License](https://github.com/SergeyDonskoy/wl/blob/master/LICENSE).
 
 ## Why?
 
@@ -18,13 +22,13 @@ Licensed under the [MIT License](https://github.com/robdimsdale/wl/blob/master/L
 Install the library with:
 
 ```
-go get gopkg.in/robdimsdale/wl.v1
+go get gopkg.in/SergeyDonskoy/wl.v1
 ```
 
 or
 
 ```
-go get github.com/robdimsdale/wl
+go get github.com/SergeyDonskoy/wl
 ```
 
 ### Usage
@@ -35,9 +39,9 @@ Create an instance of `wl.Client` using e.g. `oauth.NewClient()` as follows:
 import (
   "fmt"
 
-  "github.com/robdimsdale/wl"
-  "github.com/robdimsdale/wl/logger"
-  "github.com/robdimsdale/wl/oauth"
+  "github.com/SergeyDonskoy/wl"
+  "github.com/SergeyDonskoy/wl/logger"
+  "github.com/SergeyDonskoy/wl/oauth"
 )
 
 func main() {
@@ -61,11 +65,11 @@ and the previous minor versions of golang.
 
 ### Branches
 
-The [**develop**](https://github.com/robdimsdale/wl/tree/develop) branch is
+The [**develop**](https://github.com/SergeyDonskoy/wl/tree/develop) branch is
 where active development takes place; it is not guaranteed that any given
 commit will be stable.
 
-The [**master**](https://github.com/robdimsdale/wl/tree/master) branch points
+The [**master**](https://github.com/SergeyDonskoy/wl/tree/master) branch points
 to a stable commit. All tests should pass.
 
 ## CLI Binary
@@ -75,18 +79,18 @@ A CLI is provided with support for some utility functions
 
 ### Installation
 
-Binaries are available on the [releases](https://github.com/robdimsdale/wl/releases)
+Binaries are available on the [releases](https://github.com/SergeyDonskoy/wl/releases)
 page for various operating systems and architectures.
 
 Download the binary and place in the PATH.
 
 #### OSX
 
-A [homebrew tap](https://github.com/robdimsdale/homebrew-tap) is available;
+A [homebrew tap](https://github.com/SergeyDonskoy/homebrew-tap) is available;
 install the binary with:
 
 ```
-brew tap robdimsdale/tap
+brew tap SergeyDonskoy/tap
 brew install wl
 ```
 
@@ -151,4 +155,4 @@ WL_CLIENT_ID=my_client_id WL_ACCESS_TOKEN=my_access_token ./scripts/integration_
 ### CI
 
 - CI is performed using [Concourse](http://concourse.ci):
-https://concourse.robdimsdale.com/pipelines/wl
+https://concourse.SergeyDonskoy.com/pipelines/wl

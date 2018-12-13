@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Tasks gets all tasks for all lists.
@@ -117,7 +117,7 @@ func (c oauthClient) CompletedTasks(completed bool) ([]wl.Task, error) {
 }
 
 // TasksForListID returns Tasks for the provided listID.
-func (c oauthClient) TasksForListID(listID uint) ([]wl.Task, error) {
+func (c oauthClient) TasksForListID(listID uint64) ([]wl.Task, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -150,7 +150,7 @@ func (c oauthClient) TasksForListID(listID uint) ([]wl.Task, error) {
 }
 
 // CompletedTasksForListID returns tasks filtered by whether they are completed.
-func (c oauthClient) CompletedTasksForListID(listID uint, completed bool) ([]wl.Task, error) {
+func (c oauthClient) CompletedTasksForListID(listID uint64, completed bool) ([]wl.Task, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -185,7 +185,7 @@ func (c oauthClient) CompletedTasksForListID(listID uint, completed bool) ([]wl.
 }
 
 // Task returns the Task for the corresponding taskID.
-func (c oauthClient) Task(taskID uint) (wl.Task, error) {
+func (c oauthClient) Task(taskID uint64) (wl.Task, error) {
 	url := fmt.Sprintf(
 		"%s/tasks/%d",
 		c.apiURL,
@@ -215,12 +215,12 @@ func (c oauthClient) Task(taskID uint) (wl.Task, error) {
 }
 
 type taskCreateConfig struct {
-	ListID          uint   `json:"list_id"`
+	ListID          uint64 `json:"list_id"`
 	Title           string `json:"title"`
-	AssigneeID      uint   `json:"assignee_id,omitempty"`
+	AssigneeID      uint64 `json:"assignee_id,omitempty"`
 	Completed       bool   `json:"completed,omitempty"`
 	RecurrenceType  string `json:"recurrence_type,omitempty"`
-	RecurrenceCount uint   `json:"recurrence_count,omitempty"`
+	RecurrenceCount uint64 `json:"recurrence_count,omitempty"`
 	DueDate         string `json:"due_date,omitempty"`
 	Starred         bool   `json:"starred,omitempty"`
 }
@@ -228,12 +228,12 @@ type taskCreateConfig struct {
 // TaskUpdateConfig contains information required to update an existing task.
 type TaskUpdateConfig struct {
 	Title           string   `json:"title,omitempty"`
-	Revision        uint     `json:"revision"`
-	AssigneeID      uint     `json:"assignee_id,omitempty"`
-	ListID          uint     `json:"list_id,omitempty"`
+	Revision        uint64   `json:"revision"`
+	AssigneeID      uint64   `json:"assignee_id,omitempty"`
+	ListID          uint64   `json:"list_id,omitempty"`
 	Completed       bool     `json:"completed"`
 	RecurrenceType  string   `json:"recurrence_type,omitempty"`
-	RecurrenceCount uint     `json:"recurrence_count,omitempty"`
+	RecurrenceCount uint64   `json:"recurrence_count,omitempty"`
 	DueDate         string   `json:"due_date,omitempty"`
 	Starred         bool     `json:"starred"`
 	Remove          []string `json:"remove,omitempty"`
@@ -242,11 +242,11 @@ type TaskUpdateConfig struct {
 // CreateTask creates a task with the provided parameters.
 func (c oauthClient) CreateTask(
 	title string,
-	listID uint,
-	assigneeID uint,
+	listID uint64,
+	assigneeID uint64,
 	completed bool,
 	recurrenceType string,
-	recurrenceCount uint,
+	recurrenceCount uint64,
 	dueDate time.Time,
 	starred bool,
 ) (wl.Task, error) {
@@ -461,21 +461,21 @@ func (c oauthClient) DeleteAllTasks() error {
 }
 
 type transportTask struct {
-	ID              uint      `json:"id" yaml:"id"`
-	AssigneeID      uint      `json:"assignee_id" yaml:"assignee_id"`
-	AssignerID      uint      `json:"assigner_id" yaml:"assigner_id"`
+	ID              uint64    `json:"id" yaml:"id"`
+	AssigneeID      uint64    `json:"assignee_id" yaml:"assignee_id"`
+	AssignerID      uint64    `json:"assigner_id" yaml:"assigner_id"`
 	CreatedAt       time.Time `json:"created_at" yaml:"created_at"`
-	CreatedByID     uint      `json:"created_by_id" yaml:"created_by_id"`
+	CreatedByID     uint64    `json:"created_by_id" yaml:"created_by_id"`
 	DueDate         string    `json:"due_date" yaml:"due_date"`
-	ListID          uint      `json:"list_id" yaml:"list_id"`
-	Revision        uint      `json:"revision" yaml:"revision"`
+	ListID          uint64    `json:"list_id" yaml:"list_id"`
+	Revision        uint64    `json:"revision" yaml:"revision"`
 	Starred         bool      `json:"starred" yaml:"starred"`
 	Title           string    `json:"title" yaml:"title"`
 	Completed       bool      `json:"completed" yaml:"completed"`
 	CompletedAt     time.Time `json:"completed_at" yaml:"completed_at"`
-	CompletedByID   uint      `json:"completed_by" yaml:"completed_by"`
+	CompletedByID   uint64    `json:"completed_by" yaml:"completed_by"`
 	RecurrenceType  string    `json:"recurrence_type" yaml:"recurrence_type"`
-	RecurrenceCount uint      `json:"recurrence_count" yaml:"recurrence_count"`
+	RecurrenceCount uint64    `json:"recurrence_count" yaml:"recurrence_count"`
 }
 
 func tasksFromTransport(transportTasks []transportTask) ([]wl.Task, error) {

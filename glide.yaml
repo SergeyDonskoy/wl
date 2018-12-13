@@ -1,4 +1,4 @@
-package: github.com/robdimsdale/wl
+package: github.com/SergeyDonskoy/wl
 import:
 - package: github.com/cpuguy83/go-md2man
   version: ^1.0.4

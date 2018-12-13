@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Files gets all files for all lists.
@@ -62,7 +62,7 @@ func (c oauthClient) Files() ([]wl.File, error) {
 }
 
 // FilesForListID returns the Files associated with the provided List.
-func (c oauthClient) FilesForListID(listID uint) ([]wl.File, error) {
+func (c oauthClient) FilesForListID(listID uint64) ([]wl.File, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -95,7 +95,7 @@ func (c oauthClient) FilesForListID(listID uint) ([]wl.File, error) {
 }
 
 // FilesForTaskID returns the Files associated with the provided Task.
-func (c oauthClient) FilesForTaskID(taskID uint) ([]wl.File, error) {
+func (c oauthClient) FilesForTaskID(taskID uint64) ([]wl.File, error) {
 	if taskID == 0 {
 		return nil, errors.New("taskID must be > 0")
 	}
@@ -128,7 +128,7 @@ func (c oauthClient) FilesForTaskID(taskID uint) ([]wl.File, error) {
 }
 
 // File returns the File for the corresponding taskID.
-func (c oauthClient) File(fileID uint) (wl.File, error) {
+func (c oauthClient) File(fileID uint64) (wl.File, error) {
 	if fileID == 0 {
 		return wl.File{}, errors.New("fileID must be > 0")
 	}
@@ -162,7 +162,7 @@ func (c oauthClient) File(fileID uint) (wl.File, error) {
 }
 
 // CreateFile creates a File, associating an upload with a task.
-func (c oauthClient) CreateFile(uploadID uint, taskID uint) (wl.File, error) {
+func (c oauthClient) CreateFile(uploadID uint64, taskID uint64) (wl.File, error) {
 	if uploadID == 0 {
 		return wl.File{}, errors.New("uploadID must be > 0")
 	}

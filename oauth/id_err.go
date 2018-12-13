@@ -4,7 +4,7 @@ import "fmt"
 
 type idErr struct {
 	idType string
-	id     uint
+	id     uint64
 	err    error
 }
 

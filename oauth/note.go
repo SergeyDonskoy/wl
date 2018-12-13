@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Notes gets all tasks for all lists.
@@ -62,7 +62,7 @@ func (c oauthClient) Notes() ([]wl.Note, error) {
 }
 
 // NotesForListID returns Notes for the provided listID.
-func (c oauthClient) NotesForListID(listID uint) ([]wl.Note, error) {
+func (c oauthClient) NotesForListID(listID uint64) ([]wl.Note, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -96,7 +96,7 @@ func (c oauthClient) NotesForListID(listID uint) ([]wl.Note, error) {
 }
 
 // NotesForTaskID returns Notes for the provided taskID.
-func (c oauthClient) NotesForTaskID(taskID uint) ([]wl.Note, error) {
+func (c oauthClient) NotesForTaskID(taskID uint64) ([]wl.Note, error) {
 	if taskID == 0 {
 		return nil, errors.New("taskID must be > 0")
 	}
@@ -130,7 +130,7 @@ func (c oauthClient) NotesForTaskID(taskID uint) ([]wl.Note, error) {
 }
 
 // Note returns the Note for the corresponding noteID.
-func (c oauthClient) Note(noteID uint) (wl.Note, error) {
+func (c oauthClient) Note(noteID uint64) (wl.Note, error) {
 	if noteID == 0 {
 		return wl.Note{}, errors.New("noteID must be > 0")
 	}
@@ -165,7 +165,7 @@ func (c oauthClient) Note(noteID uint) (wl.Note, error) {
 
 // CreateNote creates a note with the provided content associated with the
 // Task for the corresponding taskID.
-func (c oauthClient) CreateNote(content string, taskID uint) (wl.Note, error) {
+func (c oauthClient) CreateNote(content string, taskID uint64) (wl.Note, error) {
 	if taskID == 0 {
 		return wl.Note{}, errors.New("taskID must be > 0")
 	}

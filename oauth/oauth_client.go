@@ -8,8 +8,8 @@ import (
 	"net/http/httputil"
 	"regexp"
 
-	"github.com/robdimsdale/wl"
-	"github.com/robdimsdale/wl/logger"
+	"github.com/SergeyDonskoy/wl"
+	"github.com/SergeyDonskoy/wl/logger"
 )
 
 // oauthClient is an implementation of wl.Client.
@@ -36,7 +36,7 @@ func NewClient(
 	}
 }
 
-func (c oauthClient) validateRecurrence(recurrenceType string, recurrenceCount uint) error {
+func (c oauthClient) validateRecurrence(recurrenceType string, recurrenceCount uint64) error {
 	if recurrenceType == "" && recurrenceCount > 0 {
 		return errors.New("recurrenceCount must be zero if provided recurrenceType is not provided")
 	}

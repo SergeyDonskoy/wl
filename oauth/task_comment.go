@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // TaskComments gets all taskComments for all lists.
@@ -62,7 +62,7 @@ func (c oauthClient) TaskComments() ([]wl.TaskComment, error) {
 }
 
 // TaskCommentsForListID returns TaskComments for the provided listID.
-func (c oauthClient) TaskCommentsForListID(listID uint) ([]wl.TaskComment, error) {
+func (c oauthClient) TaskCommentsForListID(listID uint64) ([]wl.TaskComment, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -96,7 +96,7 @@ func (c oauthClient) TaskCommentsForListID(listID uint) ([]wl.TaskComment, error
 }
 
 // TaskCommentsForTaskID returns TaskComments for the provided taskID.
-func (c oauthClient) TaskCommentsForTaskID(taskID uint) ([]wl.TaskComment, error) {
+func (c oauthClient) TaskCommentsForTaskID(taskID uint64) ([]wl.TaskComment, error) {
 	if taskID == 0 {
 		return nil, errors.New("taskID must be > 0")
 	}
@@ -131,7 +131,7 @@ func (c oauthClient) TaskCommentsForTaskID(taskID uint) ([]wl.TaskComment, error
 
 // CreateTaskComment creates a TaskComment with the provided content associated with the
 // Task for the corresponding taskID.
-func (c oauthClient) CreateTaskComment(text string, taskID uint) (wl.TaskComment, error) {
+func (c oauthClient) CreateTaskComment(text string, taskID uint64) (wl.TaskComment, error) {
 	if taskID == 0 {
 		return wl.TaskComment{}, errors.New("taskID must be > 0")
 	}
@@ -163,7 +163,7 @@ func (c oauthClient) CreateTaskComment(text string, taskID uint) (wl.TaskComment
 }
 
 // TaskComment returns the TaskComment for the corresponding taskCommentID.
-func (c oauthClient) TaskComment(taskCommentID uint) (wl.TaskComment, error) {
+func (c oauthClient) TaskComment(taskCommentID uint64) (wl.TaskComment, error) {
 	if taskCommentID == 0 {
 		return wl.TaskComment{}, errors.New("taskCommentID must be > 0")
 	}

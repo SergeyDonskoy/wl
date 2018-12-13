@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Folders returns Folders created by the current user.
@@ -39,15 +39,15 @@ func (c oauthClient) Folders() ([]wl.Folder, error) {
 }
 
 type folderCreateConfig struct {
-	Title   string `json:"title"`
-	ListIDs []uint `json:"list_ids"`
+	Title   string   `json:"title"`
+	ListIDs []uint64 `json:"list_ids"`
 }
 
 // CreateFolder creates a new folder with the provided parameters.
 // title and listIDs must both be non-empty
 func (c oauthClient) CreateFolder(
 	title string,
-	listIDs []uint,
+	listIDs []uint64,
 ) (wl.Folder, error) {
 	if title == "" {
 		return wl.Folder{}, errors.New("title must be non-empty")
@@ -92,7 +92,7 @@ func (c oauthClient) CreateFolder(
 }
 
 // Folder returns the Folder for the corresponding folderID.
-func (c oauthClient) Folder(folderID uint) (wl.Folder, error) {
+func (c oauthClient) Folder(folderID uint64) (wl.Folder, error) {
 	if folderID == 0 {
 		return wl.Folder{}, errors.New("folderID must be > 0")
 	}

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Reminders gets all reminders for all lists.
@@ -63,7 +63,7 @@ func (c oauthClient) Reminders() ([]wl.Reminder, error) {
 
 // RemindersForListID returns the Reminders for the List associated with the
 // provided listID.
-func (c oauthClient) RemindersForListID(listID uint) ([]wl.Reminder, error) {
+func (c oauthClient) RemindersForListID(listID uint64) ([]wl.Reminder, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -98,7 +98,7 @@ func (c oauthClient) RemindersForListID(listID uint) ([]wl.Reminder, error) {
 
 // RemindersForTaskID returns the Reminders for the Task associated with the
 // provided taskID.
-func (c oauthClient) RemindersForTaskID(taskID uint) ([]wl.Reminder, error) {
+func (c oauthClient) RemindersForTaskID(taskID uint64) ([]wl.Reminder, error) {
 	if taskID == 0 {
 		return nil, errors.New("taskID must be > 0")
 	}
@@ -132,7 +132,7 @@ func (c oauthClient) RemindersForTaskID(taskID uint) ([]wl.Reminder, error) {
 }
 
 // Reminder returns the Reminder associated with the provided reminderID.
-func (c oauthClient) Reminder(reminderID uint) (wl.Reminder, error) {
+func (c oauthClient) Reminder(reminderID uint64) (wl.Reminder, error) {
 	url := fmt.Sprintf(
 		"%s/reminders/%d",
 		c.apiURL,
@@ -164,7 +164,7 @@ func (c oauthClient) Reminder(reminderID uint) (wl.Reminder, error) {
 // CreateReminder creates a Reminder with the provided parameters.
 func (c oauthClient) CreateReminder(
 	date string,
-	taskID uint,
+	taskID uint64,
 	createdByDeviceUdid string,
 ) (wl.Reminder, error) {
 

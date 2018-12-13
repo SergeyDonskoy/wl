@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/SergeyDonskoy/wl"
+	"github.com/SergeyDonskoy/wl/oauth"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
-	"github.com/robdimsdale/wl"
-	"github.com/robdimsdale/wl/oauth"
 )
 
 var _ = Describe("client - Task operations", func() {
@@ -1416,21 +1416,21 @@ var _ = Describe("client - Task operations", func() {
 })
 
 type transportTask struct {
-	ID              uint      `json:"id" yaml:"id"`
-	AssigneeID      uint      `json:"assignee_id" yaml:"assignee_id"`
-	AssignerID      uint      `json:"assigner_id" yaml:"assigner_id"`
+	ID              uint64    `json:"id" yaml:"id"`
+	AssigneeID      uint64    `json:"assignee_id" yaml:"assignee_id"`
+	AssignerID      uint64    `json:"assigner_id" yaml:"assigner_id"`
 	CreatedAt       time.Time `json:"created_at" yaml:"created_at"`
-	CreatedByID     uint      `json:"created_by_id" yaml:"created_by_id"`
+	CreatedByID     uint64    `json:"created_by_id" yaml:"created_by_id"`
 	DueDate         string    `json:"due_date" yaml:"due_date"`
-	ListID          uint      `json:"list_id" yaml:"list_id"`
-	Revision        uint      `json:"revision" yaml:"revision"`
+	ListID          uint64    `json:"list_id" yaml:"list_id"`
+	Revision        uint64    `json:"revision" yaml:"revision"`
 	Starred         bool      `json:"starred" yaml:"starred"`
 	Title           string    `json:"title" yaml:"title"`
 	Completed       bool      `json:"completed" yaml:"completed"`
 	CompletedAt     time.Time `json:"completed_at" yaml:"completed_at"`
-	CompletedByID   uint      `json:"completed_by" yaml:"completed_by"`
+	CompletedByID   uint64    `json:"completed_by" yaml:"completed_by"`
 	RecurrenceType  string    `json:"recurrence_type" yaml:"recurrence_type"`
-	RecurrenceCount uint      `json:"recurrence_count" yaml:"recurrence_count"`
+	RecurrenceCount uint64    `json:"recurrence_count" yaml:"recurrence_count"`
 }
 
 func transportsFromTasks(tasks []wl.Task) []transportTask {

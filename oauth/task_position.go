@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // TaskPositions gets all task positions for all lists.
@@ -64,7 +64,7 @@ func (c oauthClient) TaskPositions() ([]wl.Position, error) {
 // TaskPositionsForListID returns the positions of all Tasks in the List
 // associated with the provided listID.
 // The returned TaskPosition.Values might be empty if the Tasks have never been reordered.
-func (c oauthClient) TaskPositionsForListID(listID uint) ([]wl.Position, error) {
+func (c oauthClient) TaskPositionsForListID(listID uint64) ([]wl.Position, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -98,7 +98,7 @@ func (c oauthClient) TaskPositionsForListID(listID uint) ([]wl.Position, error) 
 }
 
 // TaskPosition returns the TaskPosition associated with the provided taskPositionID.
-func (c oauthClient) TaskPosition(taskPositionID uint) (wl.Position, error) {
+func (c oauthClient) TaskPosition(taskPositionID uint64) (wl.Position, error) {
 	if taskPositionID == 0 {
 		return wl.Position{}, errors.New("taskPositionID must be > 0")
 	}

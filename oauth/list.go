@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Lists returns all lists the client has permission to access.
@@ -39,7 +39,7 @@ func (c oauthClient) Lists() ([]wl.List, error) {
 }
 
 // List returns the list for the corresponding listID.
-func (c oauthClient) List(listID uint) (wl.List, error) {
+func (c oauthClient) List(listID uint64) (wl.List, error) {
 	url := fmt.Sprintf(
 		"%s/lists/%d",
 		c.apiURL,

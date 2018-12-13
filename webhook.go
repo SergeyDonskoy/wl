@@ -5,9 +5,9 @@ import "time"
 // Webhook contains information about webhooks.
 // A webhook sends notifications when a list is updated.
 type Webhook struct {
-	ID             uint      `json:"id" yaml:"id"`
-	ListID         uint      `json:"list_id" yaml:"list_id"`
-	MembershipID   uint      `json:"membership_id" yaml:"membership_id"`
+	ID             uint64    `json:"id" yaml:"id"`
+	ListID         uint64    `json:"list_id" yaml:"list_id"`
+	MembershipID   uint64    `json:"membership_id" yaml:"membership_id"`
 	MembershipType string    `json:"membership_type" yaml:"membership_type"`
 	URL            string    `json:"url" yaml:"url"`
 	ProcessorType  string    `json:"processor_type" yaml:"processor_type"`

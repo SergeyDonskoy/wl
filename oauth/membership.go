@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Memberships returns the memberships the client can access.
@@ -40,7 +40,7 @@ func (c oauthClient) Memberships() ([]wl.Membership, error) {
 }
 
 // Membership returns the Membership associated with the provided membershipID.
-func (c oauthClient) Membership(membershipID uint) (wl.Membership, error) {
+func (c oauthClient) Membership(membershipID uint64) (wl.Membership, error) {
 	if membershipID == 0 {
 		return wl.Membership{}, errors.New("membershipID must be > 0")
 	}
@@ -76,7 +76,7 @@ func (c oauthClient) Membership(membershipID uint) (wl.Membership, error) {
 
 // MembershipsForListID returns the Memberships for the List associated with
 // the provided listID.
-func (c oauthClient) MembershipsForListID(listID uint) ([]wl.Membership, error) {
+func (c oauthClient) MembershipsForListID(listID uint64) ([]wl.Membership, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -112,7 +112,7 @@ func (c oauthClient) MembershipsForListID(listID uint) ([]wl.Membership, error) 
 
 // AddMemberToListViaUserID creates a new Membership associating the User with
 // the List.
-func (c oauthClient) AddMemberToListViaUserID(userID uint, listID uint, muted bool) (wl.Membership, error) {
+func (c oauthClient) AddMemberToListViaUserID(userID uint64, listID uint64, muted bool) (wl.Membership, error) {
 	if userID == 0 {
 		return wl.Membership{}, errors.New("userID must be > 0")
 	}
@@ -156,7 +156,7 @@ func (c oauthClient) AddMemberToListViaUserID(userID uint, listID uint, muted bo
 
 // AddMemberToListViaEmailAddress creates a new Membership joining the List
 // with the user associated with the provided email address.
-func (c oauthClient) AddMemberToListViaEmailAddress(emailAddress string, listID uint, muted bool) (wl.Membership, error) {
+func (c oauthClient) AddMemberToListViaEmailAddress(emailAddress string, listID uint64, muted bool) (wl.Membership, error) {
 	if emailAddress == "" {
 		return wl.Membership{}, errors.New("emailAddress must not be empty")
 	}

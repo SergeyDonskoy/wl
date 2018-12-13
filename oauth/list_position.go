@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // ListPositions returns the positions of all Lists the client can access.
@@ -39,7 +39,7 @@ func (c oauthClient) ListPositions() ([]wl.Position, error) {
 }
 
 // ListPosition returns the ListPosition associated with the provided listPositionID.
-func (c oauthClient) ListPosition(listPositionID uint) (wl.Position, error) {
+func (c oauthClient) ListPosition(listPositionID uint64) (wl.Position, error) {
 	url := fmt.Sprintf(
 		"%s/list_positions/%d",
 		c.apiURL,

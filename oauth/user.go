@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // User returns the currently logged in user.
@@ -81,7 +81,7 @@ func (c oauthClient) Users() ([]wl.User, error) {
 
 // UsersForListID returns a list of users the client can access,
 // restricted to users that have access to the provided list.
-func (c oauthClient) UsersForListID(listID uint) ([]wl.User, error) {
+func (c oauthClient) UsersForListID(listID uint64) ([]wl.User, error) {
 	var url string
 	if listID > 0 {
 		url = fmt.Sprintf("%s/users?list_id=%d", c.apiURL, listID)

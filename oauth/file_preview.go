@@ -6,14 +6,14 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // FilePreview returns the FilePreview for the corresponding fileID.
 // fileID must be > 0; platform and size are included if they are non=empty,
 // and are not valididated otherwise.
 func (c oauthClient) FilePreview(
-	fileID uint,
+	fileID uint64,
 	platform string,
 	size string,
 ) (wl.FilePreview, error) {

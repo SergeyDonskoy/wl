@@ -3,11 +3,11 @@ package oauth_test
 import (
 	"net/http"
 
+	"github.com/SergeyDonskoy/wl"
+	"github.com/SergeyDonskoy/wl/oauth"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
-	"github.com/robdimsdale/wl"
-	"github.com/robdimsdale/wl/oauth"
 )
 
 var _ = Describe("client - Membership operations", func() {

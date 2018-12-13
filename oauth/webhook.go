@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Webhooks gets all webhooks for all lists.
@@ -62,7 +62,7 @@ func (c oauthClient) Webhooks() ([]wl.Webhook, error) {
 }
 
 // WebhooksForListID returns Webhooks for the provided listID.
-func (c oauthClient) WebhooksForListID(listID uint) ([]wl.Webhook, error) {
+func (c oauthClient) WebhooksForListID(listID uint64) ([]wl.Webhook, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -96,7 +96,7 @@ func (c oauthClient) WebhooksForListID(listID uint) ([]wl.Webhook, error) {
 }
 
 // Webhook returns the Webhook for the corresponding webhookID.
-func (c oauthClient) Webhook(webhookID uint) (wl.Webhook, error) {
+func (c oauthClient) Webhook(webhookID uint64) (wl.Webhook, error) {
 	allWebhooks, err := c.Webhooks()
 	for _, w := range allWebhooks {
 		if w.ID == webhookID {
@@ -110,7 +110,7 @@ func (c oauthClient) Webhook(webhookID uint) (wl.Webhook, error) {
 // CreateWebhook creates a new webhook with the provided parameters.
 // listID must be non-zero; the remaining parameters are not validated.
 func (c oauthClient) CreateWebhook(
-	listID uint,
+	listID uint64,
 	url string,
 	processorType string,
 	configuration string,

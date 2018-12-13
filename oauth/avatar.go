@@ -8,7 +8,7 @@ import (
 // AvatarURL returns the URL of the user associated with userID.
 // Non-positive sizes are ignored, positive sizes are validated according to
 // the values at https://developer.wunderlist.com/documentation/endpoints/avatar.
-func (c oauthClient) AvatarURL(userID uint, size int, fallback bool) (string, error) {
+func (c oauthClient) AvatarURL(userID uint64, size int, fallback bool) (string, error) {
 	url := fmt.Sprintf(
 		"%s/avatar?user_id=%d",
 		c.apiURL,

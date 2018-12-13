@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // SubtaskPositions gets all subtask positions for all lists.
@@ -64,7 +64,7 @@ func (c oauthClient) SubtaskPositions() ([]wl.Position, error) {
 // SubtaskPositionsForListID returns the positions of all Subtasks in the List
 // associated with the provided listID.
 // The returned SubtaskPosition.Values might be empty if the Subtasks have never been reordered.
-func (c oauthClient) SubtaskPositionsForListID(listID uint) ([]wl.Position, error) {
+func (c oauthClient) SubtaskPositionsForListID(listID uint64) ([]wl.Position, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -100,7 +100,7 @@ func (c oauthClient) SubtaskPositionsForListID(listID uint) ([]wl.Position, erro
 // SubtaskPositionsForTaskID returns the positions of all Subtasks in the Task
 // associated with the provided taskID.
 // The returned SubtaskPosition.Values might be empty if the Subtasks have never been reordered.
-func (c oauthClient) SubtaskPositionsForTaskID(taskID uint) ([]wl.Position, error) {
+func (c oauthClient) SubtaskPositionsForTaskID(taskID uint64) ([]wl.Position, error) {
 	if taskID == 0 {
 		return nil, errors.New("taskID must be > 0")
 	}
@@ -134,7 +134,7 @@ func (c oauthClient) SubtaskPositionsForTaskID(taskID uint) ([]wl.Position, erro
 }
 
 // SubtaskPosition returns the SubtaskPosition associated with the provided subtaskPositionID.
-func (c oauthClient) SubtaskPosition(subTaskPositionID uint) (wl.Position, error) {
+func (c oauthClient) SubtaskPosition(subTaskPositionID uint64) (wl.Position, error) {
 	if subTaskPositionID == 0 {
 		return wl.Position{}, errors.New("subTaskPositionID must be > 0")
 	}

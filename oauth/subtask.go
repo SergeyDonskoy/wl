@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // Subtasks gets all tasks for all lists.
@@ -114,7 +114,7 @@ func (c oauthClient) CompletedSubtasks(completed bool) ([]wl.Subtask, error) {
 }
 
 // SubtasksForListID returns the Subtasks associated with the provided listID.
-func (c oauthClient) SubtasksForListID(listID uint) ([]wl.Subtask, error) {
+func (c oauthClient) SubtasksForListID(listID uint64) ([]wl.Subtask, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -148,7 +148,7 @@ func (c oauthClient) SubtasksForListID(listID uint) ([]wl.Subtask, error) {
 }
 
 // SubtasksForTaskID returns the Subtasks associated with the provided taskID.
-func (c oauthClient) SubtasksForTaskID(taskID uint) ([]wl.Subtask, error) {
+func (c oauthClient) SubtasksForTaskID(taskID uint64) ([]wl.Subtask, error) {
 	if taskID == 0 {
 		return nil, errors.New("taskID must be > 0")
 	}
@@ -183,7 +183,7 @@ func (c oauthClient) SubtasksForTaskID(taskID uint) ([]wl.Subtask, error) {
 
 // CompletedSubtasksForListID returns subtasks for the provided List,
 // filtered on whether they are completed.
-func (c oauthClient) CompletedSubtasksForListID(listID uint, completed bool) ([]wl.Subtask, error) {
+func (c oauthClient) CompletedSubtasksForListID(listID uint64, completed bool) ([]wl.Subtask, error) {
 	if listID == 0 {
 		return nil, errors.New("listID must be > 0")
 	}
@@ -219,7 +219,7 @@ func (c oauthClient) CompletedSubtasksForListID(listID uint, completed bool) ([]
 
 // CompletedSubtasksForTaskID returns subtasks for the provided List,
 // filtered on whether they are completed.
-func (c oauthClient) CompletedSubtasksForTaskID(taskID uint, completed bool) ([]wl.Subtask, error) {
+func (c oauthClient) CompletedSubtasksForTaskID(taskID uint64, completed bool) ([]wl.Subtask, error) {
 	if taskID == 0 {
 		return nil, errors.New("taskID must be > 0")
 	}
@@ -254,7 +254,7 @@ func (c oauthClient) CompletedSubtasksForTaskID(taskID uint, completed bool) ([]
 }
 
 // Subtask returns the subtask for the corresponding subtaskID.
-func (c oauthClient) Subtask(subtaskID uint) (wl.Subtask, error) {
+func (c oauthClient) Subtask(subtaskID uint64) (wl.Subtask, error) {
 	if subtaskID == 0 {
 		return wl.Subtask{}, errors.New("subtaskID must be > 0")
 	}
@@ -290,7 +290,7 @@ func (c oauthClient) Subtask(subtaskID uint) (wl.Subtask, error) {
 // CreateSubtask creates a Subtask for the provided parameters.
 func (c oauthClient) CreateSubtask(
 	title string,
-	taskID uint,
+	taskID uint64,
 	completed bool,
 ) (wl.Subtask, error) {
 

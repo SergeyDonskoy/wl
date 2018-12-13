@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/robdimsdale/wl"
+	"github.com/SergeyDonskoy/wl"
 )
 
 // UploadFile uploads the local file to Wunderlist.
@@ -89,8 +89,8 @@ func (c oauthClient) createUpload(
 }
 
 type uploadResponse struct {
-	ID        uint       `json:"id"`
-	UserID    uint       `json:"user_id"`
+	ID        uint64     `json:"id"`
+	UserID    uint64     `json:"user_id"`
 	State     string     `json:"state"`
 	Part      uploadPart `json:"part"`
 	ExpiresAt string     `json:"expires_at"`
@@ -138,7 +138,7 @@ func (c oauthClient) uploadAPart(part uploadPart, fileContents []byte) error {
 	return nil
 }
 
-func (c oauthClient) finishUpload(uploadID uint) (wl.Upload, error) {
+func (c oauthClient) finishUpload(uploadID uint64) (wl.Upload, error) {
 	// Mark upload as finished
 	c.logger.Debug(" - marking upload as finished", map[string]interface{}{"uploadID": uploadID})
 	url := fmt.Sprintf("%s/uploads/%d", c.apiURL, uploadID)

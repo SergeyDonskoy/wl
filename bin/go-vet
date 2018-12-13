@@ -14,12 +14,12 @@ pushd "${base_dir}" > /dev/null
     | xargs -L1 golint
 
   echo "Running govet..."
-  go list ./... \
-    | grep -v /vendor/ \
-    | sed 's/github.com\/robdimsdale\/wl[\/]*//' \
-    | xargs -L1 go tool vet -composites=false
+  #go list ./... \
+  #  | grep -v /vendor/ \
+  #  | sed 's/github.com\/SergeyDonskoy\/wl[\/]*//' \
+  # | xargs -L1 go tool vet -composites=false
 
-  go tool vet -composites=false ./*.go
+ # go tool vet -composites=false ./*.go
 popd > /dev/null
 
 echo "Found no issues"
